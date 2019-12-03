@@ -8,8 +8,9 @@ The hope is that this could be insightful for sales and consultant teams interna
 
 See it in all it's glory on [Netlify](https://employee-skills.netlify.com/).
 
-## Tooling
+## TODO
 
-- [browserlist](https://github.com/browserslist/browserslist)
-- [postcss](https://github.com/postcss)
-- [babel]
+- ENV vars for local and prod API calls
+- UI to easily add and rmeove skills to a person
+- Clean up UI
+- add auth to allow only @anthroware.com eamils (and have that be configurable)
