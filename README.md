@@ -8,6 +8,8 @@ The hope is that this could be insightful for sales and consultant teams interna
 
 See it in all it's glory on [Netlify](https://employee-skills.netlify.com/).
 
+Corresponding API lives here: [https://github.com/stevemeisner/employee-skills-api](https://github.com/stevemeisner/employee-skills-api)
+
 ## TODO
 
 - ENV vars for local and prod API calls
