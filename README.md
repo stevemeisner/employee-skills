@@ -1,12 +1,12 @@
-# react-sass-boilerplate
+# Employee Skills
 
-A simple starter for React using Webpack 4, and with Sass support.
+A living directory of employees and their skills; categorized for preference and expertise.
 
-A basic example of usine a couple hooks is available in `/components/Person.js`.
+The hope is that this could be insightful for sales and consultant teams internally when planning work, resourcing, and for hiring.
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/a6fa33ee-4294-470c-9672-23ae37c389aa/deploy-status)](https://app.netlify.com/sites/webpack4-react-fav-people/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/3977bd09-465f-41d1-b28b-b0ecf8816858/deploy-status)](https://app.netlify.com/sites/employee-skills/deploys)
 
-See it in all it's glory on [Netlify](https://webpack4-react-fav-people.netlify.com/).
+See it in all it's glory on [Netlify](https://employee-skills.netlify.com/).
 
 ## Tooling
 
