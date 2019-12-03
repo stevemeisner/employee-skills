@@ -17,8 +17,9 @@ function Person(props) {
       {skill_list.length ? (
         <div>
           <h5>Skills</h5>
-          {' '}
-          <p>{skill_list}</p>
+          <ul>
+            {skill_list.map((el) => <li key={el}>{el}</li>)}
+          </ul>
         </div>
       ) : null}
     </div>
