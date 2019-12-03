@@ -2,7 +2,7 @@
 
 A living directory of employees and their skills; categorized for preference and expertise.
 
-The hope is that this could be insightful for sales and consultant teams internally when planning work, resourcing, and for hiring.
+The hope is that this will aid Sales, Consulting, Scheduling, and Hiring by exposing the skills of the team and gaps therein.
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/3977bd09-465f-41d1-b28b-b0ecf8816858/deploy-status)](https://app.netlify.com/sites/employee-skills/deploys)
 
@@ -16,3 +16,4 @@ Corresponding API lives here: [https://github.com/stevemeisner/employee-skills-a
 - UI to easily add and rmeove skills to a person
 - Clean up UI
 - add auth to allow only @anthroware.com eamils (and have that be configurable)
+- Data Viz for various metrics, most used, most loved, most expertise, etc....
