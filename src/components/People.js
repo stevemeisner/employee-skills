@@ -46,7 +46,7 @@ function People() {
 
   // make the API call
   useEffect(() => {
-    const endpoint = 'http://localhost:3000/employees';
+    const endpoint = 'https://employee-skillz.herokuapp.com/employees';
 
     fetch(endpoint, {
       header: { 'Access-Control-Allow-Origin': '*' },
