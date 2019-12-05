@@ -2,9 +2,9 @@
   padding: 1.5rem;
   border: 5px solid $personBorder;
   border-radius: .6em;
-  background: #ECE9E6;  /* fallback for old browsers */
-// background: -webkit-linear-gradient(to right, #FFFFFF, #ECE9E6);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #FFFFFF, #ECE9E6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  box-shadow: 3px 3px 3px rgba(0,0,0, .4);
+  background: #ffb347;
+  color: #222;
   transform: scale(1);
   transition: .11s transform ease-out;
 
@@ -12,7 +12,15 @@
     transform: scale(1.015);
   }
 
-  &.fav-fav {
-    border-color: $favPersonBorder;
+  h1 {
+    margin: 0 0 1em;
+  }
+  
+  h5 {
+    margin: 0 0 1em;
+  }
+
+  ul {
+    margin-bottom: 0;
   }
 }
