@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// import Select from 'react-select';
+import Select from 'react-select';
 
 function Person({
-  name, start_date, field_start_date, skill_list,
+  name, start_date, field_start_date, skill_list, allSkills,
 }) {
   return (
     <div className={`person ${name}`}>
@@ -20,6 +20,10 @@ function Person({
           </ul>
         </div>
       ) : null}
+
+      <div className="add-remove-skills">
+        <Select options={allSkills} />
+      </div>
     </div>
   );
 }
@@ -38,4 +42,5 @@ Person.propTypes = {
   start_date: PropTypes.string,
   field_start_date: PropTypes.string,
   skill_list: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string])),
+  allSkills: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string])).isRequired,
 };

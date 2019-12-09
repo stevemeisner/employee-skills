@@ -15,6 +15,7 @@ function People() {
     keys: ['first_name', 'last_name', 'skill_list'],
   };
 
+  // sets up the fuse hook
   const {
     result, search, term, reset,
   } = useFuse({
@@ -27,12 +28,25 @@ function People() {
     reset();
 
     const skillsResults = [];
+    const skillsWithLabels = [];
 
-    setSkills(mergeDedupe([
+    const pureList = mergeDedupe([
       ...employees.map((employee) => skillsResults.concat(...skillsResults, employee.skill_list)),
-    ]));
+    ]);
+
+    pureList.forEach((prop) => {
+      const skillForList = {};
+      skillForList.label = prop;
+      skillForList.value = prop;
+      skillsWithLabels.push(skillForList);
+    });
+
+    console.info('skillsWithLabels', skillsWithLabels);
+
+    setSkills(skillsWithLabels);
   }, [employees]);
 
+  // prepping to update the skills list from within the person component
   useEffect(() => {
     console.info('skills', skills);
   }, [skills]);
@@ -91,6 +105,7 @@ function People() {
                 start_date={person.start_date}
                 field_start_date={person.field_start_date}
                 skill_list={person.skill_list}
+                allSkills={skills}
               />
             ))}
           </div>
