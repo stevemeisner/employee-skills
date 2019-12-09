@@ -1,3 +1,10 @@
 .search {
+  display: grid;
   padding: 0 0 3em;
+
+  input {
+    font-size: 2em;
+    display: block;
+    padding: .5em;
+  }
 }
