@@ -6,7 +6,9 @@ import { API_ROOT } from '../common/envVars';
 
 function People() {
   const [employees, setEmployees] = useState([]);
+  const [skills, setSkills] = useState([]);
   const [loadingStatus, setLoadingStatus] = useState(LoadingStatus.IN_PROGRESS);
+  const mergeDedupe = (arr) => [...new Set([].concat(...arr))];
 
   // set the searchable keys in the employees
   const options = {
@@ -23,11 +25,20 @@ function People() {
   // set the whole list to be the initial search results
   useEffect(() => {
     reset();
+
+    const skillsResults = [];
+
+    setSkills(mergeDedupe([
+      ...employees.map((employee) => skillsResults.concat(...skillsResults, employee.skill_list)),
+    ]));
   }, [employees]);
+
+  useEffect(() => {
+    console.info('skills', skills);
+  }, [skills]);
 
   // make the API call
   useEffect(() => {
-    console.info({ API_ROOT });
     const endpoint = `${API_ROOT}/employees`;
 
     fetch(endpoint, {
