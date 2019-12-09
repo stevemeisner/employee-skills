@@ -35,5 +35,7 @@ module.exports = {
     ],
     'react/jsx-filename-extension': [0, { extensions: ['.js', '.jsx'] }],
     'react/prefer-stateless-function': [1, { ignorePureComponents: true }],
+    'react/jsx-one-expression-per-line': 'off',
+    'camelcase': 'off'
   },
 };

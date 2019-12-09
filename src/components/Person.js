@@ -1,15 +1,12 @@
-/* eslint-disable camelcase */
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function Person(props) {
-  const {
-    name, start_date, field_start_date, skill_list,
-  } = props;
-
+function Person({
+  name, start_date, field_start_date, skill_list,
+}) {
   return (
     <div className={`person ${name}`}>
-      <h1>{name}</h1>
+      <h1>&nbsp;{name}&nbsp; </h1>
       <h5>Started on</h5>
       <p>{start_date}</p>
       <h5>Been in the game since</h5>
@@ -18,7 +15,7 @@ function Person(props) {
         <div>
           <h5>Skills</h5>
           <ul>
-            {skill_list.map((el) => <li key={el}>{el}</li>)}
+            {skill_list.map((skill) => <li key={skill}>{skill}</li>)}
           </ul>
         </div>
       ) : null}

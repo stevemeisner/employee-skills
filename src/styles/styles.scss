@@ -1,3 +1,4 @@
+@import "artifacts/fonts";
 @import "artifacts/normalize";
 @import "artifacts/vars";
 @import "components/people";
@@ -5,8 +6,7 @@
 @import "components/search";
 
 body {
-  font-family: Helvetica Neue,Helvetica,Arial,sans-serif; 
-  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.6);
+  font-family: 'Inconsolata', monospace;
   background: #0F2027;  /* fallback for old browsers */
   background: -webkit-linear-gradient(to right, #2C5364, #203A43, #0F2027);  /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(to right, #2C5364, #203A43, #0F2027); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
