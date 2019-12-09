@@ -2,11 +2,13 @@ import React, { useState, useEffect } from 'react';
 import useFuse from 'react-use-fuse';
 import LoadingStatus from '../common/loading-status';
 import Person from './Person';
+import { API_ROOT } from '../common/envVars';
 
 function People() {
   const [employees, setEmployees] = useState([]);
   const [loadingStatus, setLoadingStatus] = useState(LoadingStatus.IN_PROGRESS);
 
+  // set the searchable keys in the employees
   const options = {
     keys: ['first_name', 'last_name', 'skill_list'],
   };
@@ -25,7 +27,8 @@ function People() {
 
   // make the API call
   useEffect(() => {
-    const endpoint = 'http://localhost:3000/employees';
+    console.info({ API_ROOT });
+    const endpoint = `${API_ROOT}/employees`;
 
     fetch(endpoint, {
       header: { 'Access-Control-Allow-Origin': '*' },
