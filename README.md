@@ -12,10 +12,8 @@ Corresponding API lives here: [https://github.com/stevemeisner/employee-skills-a
 
 ## TODO
 
-- ENV vars for local and prod API calls
-- Fuzzy search instead of straight string matching
-  - [https://fusejs.io/](https://fusejs.io/)
-  - [https://github.com/bevacqua/fuzzysearch](https://github.com/bevacqua/fuzzysearch)
+- ~~ENV vars for local and prod API calls~~
+- ~~Fuzzy search instead of straight string matching~~
 - UI to easily add and rmeove skills to a person
   - [https://github.com/JedWatson/react-select](https://github.com/JedWatson/react-select)
 - Clean up UI
