@@ -27,11 +27,9 @@ function People() {
   useEffect(() => {
     reset();
 
-    const skillsResults = [];
     const skillsWithLabels = [];
-
     const pureList = mergeDedupe([
-      ...employees.map((employee) => skillsResults.concat(...skillsResults, employee.skill_list)),
+      ...employees.map((employee) => [].concat(...[], employee.skill_list)),
     ]);
 
     pureList.forEach((prop) => {
@@ -104,7 +102,7 @@ function People() {
                 name={`${person.first_name} ${person.last_name}`}
                 start_date={person.start_date}
                 field_start_date={person.field_start_date}
-                skill_list={person.skill_list}
+                personSkills={person.skill_list}
                 allSkills={skills}
               />
             ))}
