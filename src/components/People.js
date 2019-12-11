@@ -6,13 +6,16 @@ import { API_ROOT } from '../common/envVars';
 
 function People() {
   const [employees, setEmployees] = useState([]);
+  const [skills, setSkills] = useState([]);
   const [loadingStatus, setLoadingStatus] = useState(LoadingStatus.IN_PROGRESS);
+  const mergeDedupe = (arr) => [...new Set([].concat(...arr))];
 
   // set the searchable keys in the employees
   const options = {
     keys: ['first_name', 'last_name', 'skill_list'],
   };
 
+  // sets up the fuse hook
   const {
     result, search, term, reset,
   } = useFuse({
@@ -23,11 +26,31 @@ function People() {
   // set the whole list to be the initial search results
   useEffect(() => {
     reset();
+
+    const skillsWithLabels = [];
+    const pureList = mergeDedupe([
+      ...employees.map((employee) => [].concat(...[], employee.skill_list)),
+    ]);
+
+    pureList.forEach((prop) => {
+      const skillForList = {};
+      skillForList.label = prop;
+      skillForList.value = prop;
+      skillsWithLabels.push(skillForList);
+    });
+
+    console.info('skillsWithLabels', skillsWithLabels);
+
+    setSkills(skillsWithLabels);
   }, [employees]);
+
+  // prepping to update the skills list from within the person component
+  useEffect(() => {
+    console.info('skills', skills);
+  }, [skills]);
 
   // make the API call
   useEffect(() => {
-    console.info({ API_ROOT });
     const endpoint = `${API_ROOT}/employees`;
 
     fetch(endpoint, {
@@ -79,7 +102,8 @@ function People() {
                 name={`${person.first_name} ${person.last_name}`}
                 start_date={person.start_date}
                 field_start_date={person.field_start_date}
-                skill_list={person.skill_list}
+                personSkills={person.skill_list}
+                allSkills={skills}
               />
             ))}
           </div>

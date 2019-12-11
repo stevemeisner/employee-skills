@@ -5,12 +5,6 @@
   box-shadow: 3px 3px 3px rgba(0,0,0, .4);
   background: #ffb347;
   color: #222;
-  transform: scale(1);
-  transition: .11s transform ease-out;
-
-  &:hover {
-    transform: scale(1.015);
-  }
 
   h1 {
     font-family: 'Zilla Slab Highlight', Helvetica Neue,Helvetica,Arial,sans-serif;
