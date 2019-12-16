@@ -23,30 +23,36 @@ function People() {
     options,
   });
 
+  const convertStringsToObject = (array) => {
+    const objectWithLabels = [];
+
+    array.forEach((prop) => {
+      const skillForList = {};
+      skillForList.label = prop;
+      skillForList.value = prop;
+      objectWithLabels.push(skillForList);
+    });
+
+    return objectWithLabels;
+  };
+
   // set the whole list to be the initial search results
   useEffect(() => {
     reset();
 
-    const skillsWithLabels = [];
-    const pureList = mergeDedupe([
-      ...employees.map((employee) => [].concat(...[], employee.skill_list)),
-    ]);
+    if (employees.length > 0) {
+      const pureList = mergeDedupe([
+        ...employees.map((employee) => [].concat(...[], employee.skill_list)),
+      ]);
 
-    pureList.forEach((prop) => {
-      const skillForList = {};
-      skillForList.label = prop;
-      skillForList.value = prop;
-      skillsWithLabels.push(skillForList);
-    });
 
-    console.info('skillsWithLabels', skillsWithLabels);
-
-    setSkills(skillsWithLabels);
+      setSkills(convertStringsToObject(pureList));
+    }
   }, [employees]);
 
   // prepping to update the skills list from within the person component
   useEffect(() => {
-    console.info('skills', skills);
+    setLoadingStatus(LoadingStatus.SUCCESS);
   }, [skills]);
 
   // make the API call
@@ -63,7 +69,6 @@ function People() {
           setLoadingStatus(LoadingStatus.ERROR);
         } else {
           setEmployees(response);
-          setLoadingStatus(LoadingStatus.SUCCESS);
         }
       })
       .catch(() => {
@@ -102,7 +107,7 @@ function People() {
                 name={`${person.first_name} ${person.last_name}`}
                 start_date={person.start_date}
                 field_start_date={person.field_start_date}
-                personSkills={person.skill_list}
+                personSkills={convertStringsToObject(person.skill_list)}
                 allSkills={skills}
               />
             ))}

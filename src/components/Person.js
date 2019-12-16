@@ -1,3 +1,4 @@
+/* eslint-disable react/no-this-in-sfc */
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
@@ -7,23 +8,6 @@ function Person({
   name, start_date, field_start_date, personSkills, allSkills,
 }) {
   const [skillsSelectOptions, setSkillsSelectOptions] = useState(personSkills);
-
-  const createSelectOptions = (array) => {
-    const skillsWithLabels = [];
-
-    array.forEach((prop) => {
-      const skillForList = {};
-      skillForList.label = prop;
-      skillForList.value = prop;
-      skillsWithLabels.push(skillForList);
-    });
-
-    setSkillsSelectOptions(skillsWithLabels);
-  };
-
-  useEffect(() => {
-    createSelectOptions(personSkills);
-  }, [personSkills]);
 
   const handleChange = (selectedOptions) => {
     setSkillsSelectOptions(selectedOptions);
@@ -39,7 +23,13 @@ function Person({
 
       <div className="add-remove-skills">
         <h5>Skills</h5>
-        <Select options={allSkills} onChange={handleChange} value={skillsSelectOptions} isSearchable isMulti />
+        <Select
+          options={allSkills}
+          onChange={handleChange}
+          value={skillsSelectOptions}
+          isSearchable
+          isMulti
+        />
       </div>
     </div>
   );
@@ -58,6 +48,6 @@ Person.propTypes = {
   name: PropTypes.string,
   start_date: PropTypes.string,
   field_start_date: PropTypes.string,
-  personSkills: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string])),
-  allSkills: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string])).isRequired,
+  personSkills: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.object])),
+  allSkills: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.object])).isRequired,
 };
