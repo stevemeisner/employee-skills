@@ -1,6 +1,4 @@
-/* eslint-disable react/no-this-in-sfc */
-/* eslint-disable no-unused-vars */
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Select from 'react-select';
 
