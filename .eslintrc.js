@@ -41,5 +41,6 @@ module.exports = {
     'react/jsx-one-expression-per-line': 'off',
     camelcase: 'off',
     'comma-dangle': 'off',
+    'implicit-arrow-linebreak': 'off',
   },
 }
