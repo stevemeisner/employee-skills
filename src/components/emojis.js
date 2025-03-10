@@ -1,7 +1,6 @@
 // slack token
 // xoxp-2540982134-17693948869-849817580385-cfc913b3caee3c9580b2d3cc81706bf8
 
-
 /**
 
 npm i bluebird slack-node
@@ -88,7 +87,6 @@ function Emojis() {
       });
     }));
   }
-
 
   function run() {
     // keep variables along the execution

@@ -1,10 +1,11 @@
-const path = require('path');
+const path = require('path')
 
-const devMode = process.env.NODE_ENV !== 'production';
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
-const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const devMode = process.env.NODE_ENV !== 'production'
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
+const sass = require('sass')
 
 module.exports = {
   devtool: 'source-map',
@@ -16,6 +17,13 @@ module.exports = {
   },
   devServer: {
     contentBase: './build',
+    proxy: {
+      '/employees': {
+        target: 'http://localhost:3000',
+        changeOrigin: true,
+        secure: false,
+      },
+    },
   },
   optimization: {
     minimizer: [
@@ -49,9 +57,22 @@ module.exports = {
       // CSS
       {
         test: /\.(sa|sc|c)ss$/,
-        use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader', 'sass-loader'],
+        use: [
+          MiniCssExtractPlugin.loader,
+          'css-loader',
+          'postcss-loader',
+          {
+            loader: 'sass-loader',
+            options: {
+              implementation: sass,
+              sassOptions: {
+                quietDeps: true, // Suppress legacy JS API warnings
+              },
+            },
+          },
+        ],
         include: path.join(__dirname, 'src'),
       },
     ],
   },
-};
+}

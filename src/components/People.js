@@ -1,75 +1,86 @@
-import React, { useState, useEffect } from 'react';
-import useFuse from 'react-use-fuse';
-import LoadingStatus from '../common/loading-status';
-import Person from './Person';
-import { API_ROOT } from '../common/envVars';
+import React, { useState, useEffect } from 'react'
+import useFuse from 'react-use-fuse'
+import LoadingStatus from '../common/loading-status'
+import Person from './Person'
+import { API_ROOT } from '../common/envVars'
 
 function People() {
-  const [employees, setEmployees] = useState([]);
-  const [skills, setSkills] = useState([]);
-  const [loadingStatus, setLoadingStatus] = useState(LoadingStatus.IN_PROGRESS);
-  const mergeDedupe = (arr) => [...new Set([].concat(...arr))];
+  const [employees, setEmployees] = useState([])
+  const [skills, setSkills] = useState([])
+  const [loadingStatus, setLoadingStatus] = useState(LoadingStatus.IN_PROGRESS)
+  const mergeDedupe = (arr) => [...new Set([].concat(...arr))]
 
   // set the searchable keys in the employees
   const options = {
     keys: ['first_name', 'last_name', 'skill_list'],
-  };
+  }
 
   // sets up the fuse hook
-  const {
-    result, search, term, reset,
-  } = useFuse({
+  const { result, search, term, reset } = useFuse({
     data: employees,
     options,
-  });
+  })
 
   // set the whole list to be the initial search results
   useEffect(() => {
-    reset();
+    reset()
 
-    const skillsWithLabels = [];
+    const skillsWithLabels = []
     const pureList = mergeDedupe([
       ...employees.map((employee) => [].concat(...[], employee.skill_list)),
-    ]);
+    ])
 
     pureList.forEach((prop) => {
-      const skillForList = {};
-      skillForList.label = prop;
-      skillForList.value = prop;
-      skillsWithLabels.push(skillForList);
-    });
+      const skillForList = {}
+      skillForList.label = prop
+      skillForList.value = prop
+      skillsWithLabels.push(skillForList)
+    })
 
-    console.info('skillsWithLabels', skillsWithLabels);
+    console.info('skillsWithLabels', skillsWithLabels)
 
-    setSkills(skillsWithLabels);
-  }, [employees]);
+    setSkills(skillsWithLabels)
+  }, [employees])
 
   // prepping to update the skills list from within the person component
   useEffect(() => {
-    console.info('skills', skills);
-  }, [skills]);
+    console.info('skills', skills)
+  }, [skills])
 
   // make the API call
   useEffect(() => {
-    const endpoint = `${API_ROOT}/employees`;
+    const endpoint = `${API_ROOT}/employees`
+    console.log('Fetching from endpoint:', endpoint)
 
     fetch(endpoint, {
-      header: { 'Access-Control-Allow-Origin': '*' },
+      headers: { 'Access-Control-Allow-Origin': '*' },
       method: 'GET',
     })
       .then((res) => res.json())
       .then((response) => {
-        if (response.data === null) {
-          setLoadingStatus(LoadingStatus.ERROR);
+        console.log('API Response:', response)
+
+        if (!response || response.data === null) {
+          console.error('API response is null or invalid')
+          setLoadingStatus(LoadingStatus.ERROR)
+        } else if (Array.isArray(response)) {
+          console.log('Setting employees with array response')
+          setEmployees(response)
+          setLoadingStatus(LoadingStatus.SUCCESS)
+        } else if (response.data && Array.isArray(response.data)) {
+          console.log('Setting employees with response.data')
+          setEmployees(response.data)
+          setLoadingStatus(LoadingStatus.SUCCESS)
         } else {
-          setEmployees(response);
-          setLoadingStatus(LoadingStatus.SUCCESS);
+          console.error('Unexpected API response format')
+          setLoadingStatus(LoadingStatus.ERROR)
         }
       })
-      .catch(() => {
-        setLoadingStatus(LoadingStatus.ERROR);
-      });
-  }, []);
+      .catch((error) => {
+        console.error('API fetch error:', error)
+        setLoadingStatus(LoadingStatus.ERROR)
+      })
+  }, [])
 
   switch (loadingStatus) {
     case LoadingStatus.ERROR:
@@ -77,13 +88,13 @@ function People() {
         <div className="people error">
           <h1>Houston, we have a problem.</h1>
         </div>
-      );
+      )
     case LoadingStatus.IN_PROGRESS:
       return (
         <div className="people loading">
           <h1>Loading... beep boop....</h1>
         </div>
-      );
+      )
     default:
       return (
         <>
@@ -108,8 +119,8 @@ function People() {
             ))}
           </div>
         </>
-      );
+      )
   }
 }
 
-export default People;
+export default People

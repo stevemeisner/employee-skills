@@ -1,4 +1,6 @@
-const env = process.env.NODE_ENV;
-const API_ROOT = env === 'development' ? 'http://localhost:3000' : 'https://employee-skillz.herokuapp.com';
+const env = process.env.NODE_ENV
+// Use relative path in development to leverage the webpack proxy
+const API_ROOT =
+  env === 'development' ? '' : 'https://employee-skillz.herokuapp.com'
 
-export { env, API_ROOT };
+export { env, API_ROOT }

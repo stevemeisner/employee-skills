@@ -1,16 +1,19 @@
+@use '../artifacts/vars' as vars;
+
 .person {
   padding: 1.5rem;
-  border: 5px solid $personBorder;
-  border-radius: .6em;
-  box-shadow: 3px 3px 3px rgba(0,0,0, .4);
+  border: 5px solid vars.$personBorder;
+  border-radius: 0.6em;
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.4);
   background: #ffb347;
   color: #222;
 
   h1 {
-    font-family: 'Zilla Slab Highlight', Helvetica Neue,Helvetica,Arial,sans-serif;
+    font-family: 'Zilla Slab Highlight', Helvetica Neue, Helvetica, Arial,
+      sans-serif;
     margin: 0 0 1em;
   }
-  
+
   h5 {
     margin: 0 0 1em;
   }

@@ -1,15 +1,25 @@
-@import "artifacts/fonts";
-@import "artifacts/normalize";
-@import "artifacts/vars";
-@import "components/people";
-@import "components/person";
-@import "components/search";
+@use 'artifacts/fonts';
+@use 'artifacts/normalize';
+@use 'artifacts/vars';
+@use 'components/people';
+@use 'components/person';
+@use 'components/search';
 
 body {
   font-family: 'Inconsolata', monospace;
-  background: #0F2027;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #2C5364, #203A43, #0F2027);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #2C5364, #203A43, #0F2027); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: #0f2027; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #2c5364,
+    #203a43,
+    #0f2027
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #2c5364,
+    #203a43,
+    #0f2027
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 .wrapper {

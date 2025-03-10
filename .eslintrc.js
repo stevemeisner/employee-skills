@@ -3,7 +3,7 @@ module.exports = {
     browser: true,
     es6: true,
   },
-  extends: 'airbnb',
+  extends: ['airbnb', 'react'],
   globals: {
     Atomics: 'readonly',
     SharedArrayBuffer: 'readonly',
@@ -17,25 +17,29 @@ module.exports = {
   },
   plugins: ['react'],
   rules: {
-    "no-console": [
-      "error",
+    semi: 'off',
+    'no-console': 'off',
+    'object-curly-newline': 'off',
+    'no-restricted-syntax': 'off',
+    'guard-for-in': 'off',
+    'consistent-return': 'off',
+    'no-unused-vars': 'warn',
+    'no-undef': 'warn',
+    'no-shadow': 'warn',
+    'no-return-assign': 'warn',
+    indent: 'off',
+    'react/jsx-indent': 'off',
+    'react/jsx-indent-props': 'off',
+    'max-len': [
+      'error',
       {
-        "allow": [
-          "warn",
-          "error",
-          "info"
-        ]
-      }
-    ],
-    "max-len": [
-      "error",
-      {
-        "code": 140
-      }
+        code: 140,
+      },
     ],
     'react/jsx-filename-extension': [0, { extensions: ['.js', '.jsx'] }],
     'react/prefer-stateless-function': [1, { ignorePureComponents: true }],
     'react/jsx-one-expression-per-line': 'off',
-    'camelcase': 'off'
+    camelcase: 'off',
+    'comma-dangle': 'off',
   },
-};
+}
