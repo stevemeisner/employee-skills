@@ -42,5 +42,6 @@ module.exports = {
     camelcase: 'off',
     'comma-dangle': 'off',
     'implicit-arrow-linebreak': 'off',
+    'operator-linebreak': 'off',
   },
 }

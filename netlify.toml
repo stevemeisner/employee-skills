@@ -1,0 +1,11 @@
+[build]
+  publish = "build"
+  command = "yarn && yarn build"
+
+[build.environment]
+  NODE_VERSION = "14.20.1"
+  NPM_FLAGS = "--version"
+
+# Use latest stable Ubuntu image (Focal)
+[build.image]
+  ubuntu = "focal"
