@@ -1,11 +1,11 @@
 [build]
-  publish = "build"
-  command = "yarn && yarn build"
+  publish = "dist"
+  command = "yarn build"
 
 [build.environment]
-  NODE_VERSION = "14.20.1"
-  NPM_FLAGS = "--version"
+  NODE_VERSION = "18.19.0"  # LTS version with good compatibility
+  NPM_FLAGS = "--no-optional"
 
-# Use latest stable Ubuntu image (Focal)
+# Use latest stable Ubuntu image
 [build.image]
-  ubuntu = "focal"
+  ubuntu = "jammy"  # Ubuntu 22.04 LTS
